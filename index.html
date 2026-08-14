@@ -1,1 +1,515 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lê Đào Trung Hiếu | Portfolio</title>
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0a0a0a;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #00e5ff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00e5ff;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 40px;
+
+            background:
+                radial-gradient(circle at 50% 30%, #00343b 0%, transparent 35%),
+                #0a0a0a;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 90px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #00e5ff;
+        }
+
+        .hero p {
+            color: #aaa;
+            font-size: 20px;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .tag {
+            display: inline-block;
+            margin-bottom: 25px;
+            padding: 8px 18px;
+            border: 1px solid #00e5ff;
+            border-radius: 30px;
+            color: #00e5ff;
+            font-size: 14px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 13px 28px;
+            border-radius: 30px;
+            background: #00e5ff;
+            color: #001014;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.25);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 100px 8%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-size: 40px;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #00e5ff;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .about-text p {
+            color: #aaa;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .info-card {
+            border: 1px solid #222;
+            background: #111;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .info {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .info:last-child {
+            border-bottom: none;
+        }
+
+        .info strong {
+            color: #00e5ff;
+        }
+
+        /* SKILLS */
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-8px);
+            border-color: #00e5ff;
+        }
+
+        .skill h3 {
+            margin-bottom: 10px;
+            color: #00e5ff;
+        }
+
+        .skill p {
+            color: #999;
+        }
+
+        /* PROJECTS */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            border-color: #00e5ff;
+        }
+
+        .project h3 {
+            color: #00e5ff;
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            color: #999;
+        }
+
+        /* FUTURE */
+        .future {
+            text-align: center;
+            padding: 80px 30px;
+            border: 1px solid #222;
+            border-radius: 20px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0, 229, 255, 0.08),
+                    rgba(0, 0, 0, 0.2)
+                );
+        }
+
+        .future h2 {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .future p {
+            color: #aaa;
+            max-width: 700px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            color: #666;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">LDTH.</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#future">Future</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="tag">
+                Student • Engineering Enthusiast
+            </div>
+
+            <h1>
+                Lê Đào Trung <span>Hiếu</span>
+            </h1>
+
+            <p>
+                17 tuổi • Học sinh THPT Nguyễn Thượng Hiền
+                <br>
+                Future Electrical Engineer ⚡
+            </p>
+
+            <a href="#about" class="button">
+                Khám phá portfolio ↓
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <h2 class="section-title">
+            About <span>Me</span>
+        </h2>
+
+        <div class="about">
+
+            <div class="about-text">
+
+                <p>
+                    Xin chào! Mình là <strong>Lê Đào Trung Hiếu</strong>,
+                    hiện đang 17 tuổi và là học sinh của trường
+                    <strong>THPT Nguyễn Thượng Hiền</strong>.
+                </p>
+
+                <p>
+                    Mình có hứng thú với công nghệ, điện tử và cách
+                    những hệ thống kỹ thuật hoạt động.
+                </p>
+
+                <p>
+                    Trong thời gian tới, mình dự định theo học
+                    <strong>Electrical Engineering (EE)</strong>
+                    và muốn xây dựng nền tảng vững chắc về điện,
+                    điện tử, vi điều khiển và các hệ thống kỹ thuật.
+                </p>
+
+            </div>
+
+            <div class="info-card">
+
+                <div class="info">
+                    <span>Họ tên</span>
+                    <strong>Lê Đào Trung Hiếu</strong>
+                </div>
+
+                <div class="info">
+                    <span>Tuổi</span>
+                    <strong>17</strong>
+                </div>
+
+                <div class="info">
+                    <span>Trường</span>
+                    <strong>THPT Nguyễn Thượng Hiền</strong>
+                </div>
+
+                <div class="info">
+                    <span>Định hướng</span>
+                    <strong>Electrical Engineering</strong>
+                </div>
+
+                <div class="info">
+                    <span>Interest</span>
+                    <strong>Electronics ⚡</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skills">
+
+        <h2 class="section-title">
+            My <span>Interests</span>
+        </h2>
+
+        <div class="skills">
+
+            <div class="skill">
+                <h3>⚡ Electronics</h3>
+                <p>
+                    Tìm hiểu về mạch điện, linh kiện điện tử,
+                    điện áp, dòng điện và cách các mạch hoạt động.
+                </p>
+            </div>
+
+            <div class="skill">
+                <h3>💻 Programming</h3>
+                <p>
+                    Học lập trình và sử dụng code để điều khiển
+                    các hệ thống điện tử và vi điều khiển.
+                </p>
+            </div>
+
+            <div class="skill">
+                <h3>🔧 Engineering</h3>
+                <p>
+                    Thích tìm hiểu cách thiết kế, xây dựng và
+                    giải quyết các vấn đề bằng kỹ thuật.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects">
+
+        <h2 class="section-title">
+            My <span>Projects</span>
+        </h2>
+
+        <div class="projects">
+
+            <div class="project">
+                <h3>Arduino Projects</h3>
+                <p>
+                    Thực hành với Arduino, LED, button, resistor,
+                    diode, capacitor và các linh kiện điện tử khác.
+                </p>
+            </div>
+
+            <div class="project">
+                <h3>Electronics Experiments</h3>
+                <p>
+                    Tự xây dựng các mạch nhỏ để hiểu rõ hơn về
+                    voltage, current, resistance và tín hiệu analog/digital.
+                </p>
+            </div>
+
+            <div class="project">
+                <h3>Future EE Projects</h3>
+                <p>
+                    Các dự án về embedded systems, mạch điện,
+                    microcontroller và hardware sẽ được cập nhật.
+                </p>
+            </div>
+
+            <div class="project">
+                <h3>Coming Soon...</h3>
+                <p>
+                    Đây mới chỉ là điểm bắt đầu. Những project
+                    lớn hơn sẽ xuất hiện trong tương lai. 🚀
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FUTURE -->
+    <section id="future">
+
+        <div class="future">
+
+            <h2>Future Electrical Engineer ⚡</h2>
+
+            <p>
+                Mục tiêu của mình là theo đuổi ngành
+                Electrical Engineering và từng bước phát triển
+                kiến thức về electronics, embedded systems,
+                hardware và engineering.
+            </p>
+
+            <a href="#home" class="button">
+                Back to top ↑
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © 2026 Lê Đào Trung Hiếu • Built with HTML & CSS ⚡
+        </p>
+    </footer>
+
+</body>
+</html>
