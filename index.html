@@ -1,44 +1,67 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lê Đào Trung Hiếu | Portfolio</title>
+    <title>Lê Đào Trung Hiếu | Electrical Engineering Portfolio</title>
 
     <style>
+        :root {
+            --blue: #0878d1;
+            --dark-blue: #063b68;
+            --light-blue: #eaf6ff;
+            --white: #ffffff;
+            --text: #102a43;
+            --gray: #627d98;
+            --line: #cfe8fa;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0a0a0a;
-            color: #f5f5f5;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--white);
+            color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* NAVBAR */
+        /* =========================
+           NAVIGATION
+        ========================= */
+
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 18px 8%;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(10px);
+            justify-content: space-between;
+            padding: 0 7%;
             z-index: 1000;
-            border-bottom: 1px solid #222;
         }
 
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #00e5ff;
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span {
+            color: var(--blue);
         }
 
         nav ul {
@@ -48,241 +71,520 @@
         }
 
         nav a {
-            color: #ddd;
             text-decoration: none;
+            color: var(--text);
+            font-size: 0.9rem;
+            font-weight: 600;
             transition: 0.3s;
         }
 
         nav a:hover {
-            color: #00e5ff;
+            color: var(--blue);
         }
 
-        /* HERO */
+        /* =========================
+           HERO / OVERVIEW
+        ========================= */
+
         .hero {
             min-height: 100vh;
+            padding: 140px 8% 80px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff 0%,
+                    #f4fbff 60%,
+                    #e8f6ff 100%
+                );
+        }
+
+        /* Engineering circuit background */
+
+        .circuit-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.35;
+        }
+
+        .circuit {
+            position: absolute;
+            height: 1px;
+            background: var(--blue);
+        }
+
+        .circuit::after {
+            content: "";
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border: 2px solid var(--blue);
+            background: white;
+            border-radius: 50%;
+            right: -5px;
+            top: -4px;
+        }
+
+        .c1 {
+            width: 300px;
+            right: 5%;
+            top: 25%;
+        }
+
+        .c2 {
+            width: 220px;
+            right: 18%;
+            top: 70%;
+        }
+
+        .c3 {
+            width: 180px;
+            left: 3%;
+            top: 35%;
+        }
+
+        .c4 {
+            width: 260px;
+            left: 20%;
+            top: 82%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+        }
+
+        .eyebrow {
+            color: var(--blue);
+            font-weight: 700;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 6.5rem);
+            line-height: 0.95;
+            color: var(--dark-blue);
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: var(--blue);
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--gray);
+            max-width: 650px;
+            margin-bottom: 35px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(200px, 1fr));
+            gap: 12px 30px;
+            max-width: 600px;
+        }
+
+        .contact-item {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .contact-label {
+            font-size: 0.72rem;
+            color: var(--blue);
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .contact-value {
+            font-size: 0.95rem;
+        }
+
+        .linkedin-empty {
+            color: #a7bacb;
+            font-style: italic;
+        }
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
+        section {
+            padding: 110px 8%;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-number {
+            color: var(--blue);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .section-title {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            color: var(--dark-blue);
+            line-height: 1;
+            margin-top: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--gray);
+            margin-top: 15px;
+            max-width: 600px;
+        }
+
+        /* =========================
+           ACADEMIC
+        ========================= */
+
+        .academic {
+            background: #f7fcff;
+        }
+
+        .academic-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+        }
+
+        .academic-card {
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 15px 45px rgba(8, 120, 209, 0.07);
+            transition: 0.3s;
+        }
+
+        .academic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 55px rgba(8, 120, 209, 0.12);
+        }
+
+        .academic-card h3 {
+            color: var(--dark-blue);
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .school-year {
+            color: var(--blue);
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .stat {
+            background: var(--light-blue);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--blue);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* =========================
+           ACTIVITIES
+        ========================= */
+
+        .activities-section {
+            background: white;
+        }
+
+        .activity-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+            margin-bottom: 130px;
+        }
+
+        .activity-wrapper:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Circular selector */
+
+        .activity-wheel {
+            width: min(500px, 90vw);
+            height: min(500px, 90vw);
+            position: relative;
+            margin: auto;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background:
+                radial-gradient(
+                    circle,
+                    white 0 30%,
+                    #f2faff 31% 55%,
+                    white 56%
+                );
+        }
+
+        .activity-wheel::before {
+            content: "";
+            position: absolute;
+            inset: 14%;
+            border: 1px dashed #9dd2f5;
+            border-radius: 50%;
+        }
+
+        .activity-wheel::after {
+            content: "EE";
+            position: absolute;
+            width: 105px;
+            height: 105px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--dark-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            box-shadow: 0 0 0 10px #e1f3ff,
+                        0 0 35px rgba(8, 120, 209, 0.25);
+        }
+
+        .activity-node {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--blue);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 100px 20px 40px;
-
-            background:
-                radial-gradient(circle at 50% 30%, #00343b 0%, transparent 35%),
-                #0a0a0a;
+            padding: 10px;
+            color: var(--dark-blue);
+            font-size: 0.72rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.35s ease;
+            box-shadow: 0 8px 25px rgba(8, 120, 209, 0.12);
         }
 
-        .hero-content {
-            max-width: 900px;
+        .activity-node:hover {
+            background: var(--blue);
+            color: white;
+            transform: scale(1.15);
+            box-shadow: 0 12px 35px rgba(8, 120, 209, 0.3);
+            z-index: 5;
         }
 
-        .hero h1 {
-            font-size: clamp(45px, 8vw, 90px);
-            line-height: 1.05;
-            margin-bottom: 20px;
+        /* positions */
+
+        .node-1 {
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        .hero h1 span {
-            color: #00e5ff;
+        .node-2 {
+            top: 22%;
+            right: -20px;
         }
 
-        .hero p {
-            color: #aaa;
-            font-size: 20px;
-            max-width: 650px;
-            margin: auto;
+        .node-3 {
+            bottom: 5%;
+            right: 7%;
         }
 
-        .tag {
-            display: inline-block;
+        .node-4 {
+            bottom: 5%;
+            left: 7%;
+        }
+
+        .node-5 {
+            top: 22%;
+            left: -20px;
+        }
+
+        .node-6 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* =========================
+           ACTIVITY DETAILS
+        ========================= */
+
+        .activity-info {
+            min-height: 330px;
+            border-left: 3px solid var(--blue);
+            padding: 30px 40px;
+            background: #f7fcff;
+            border-radius: 0 20px 20px 0;
+        }
+
+        .activity-info h3 {
+            color: var(--dark-blue);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .activity-info p {
+            color: var(--gray);
             margin-bottom: 25px;
-            padding: 8px 18px;
-            border: 1px solid #00e5ff;
-            border-radius: 30px;
-            color: #00e5ff;
-            font-size: 14px;
         }
 
-        .button {
-            display: inline-block;
-            margin-top: 35px;
-            padding: 13px 28px;
-            border-radius: 30px;
-            background: #00e5ff;
-            color: #001014;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.25);
-        }
-
-        /* SECTIONS */
-        section {
-            padding: 100px 8%;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .section-title {
-            font-size: 40px;
-            margin-bottom: 50px;
-        }
-
-        .section-title span {
-            color: #00e5ff;
-        }
-
-        /* ABOUT */
-        .about {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        .about-text p {
-            color: #aaa;
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
-
-        .info-card {
-            border: 1px solid #222;
-            background: #111;
-            padding: 30px;
-            border-radius: 15px;
-        }
-
-        .info {
+        .image-placeholder {
+            height: 150px;
+            border: 2px dashed #9bcfee;
+            border-radius: 12px;
             display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid #222;
-        }
-
-        .info:last-child {
-            border-bottom: none;
-        }
-
-        .info strong {
-            color: #00e5ff;
-        }
-
-        /* SKILLS */
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .skill {
-            background: #111;
-            border: 1px solid #222;
-            border-radius: 15px;
-            padding: 30px;
-            transition: 0.3s;
-        }
-
-        .skill:hover {
-            transform: translateY(-8px);
-            border-color: #00e5ff;
-        }
-
-        .skill h3 {
-            margin-bottom: 10px;
-            color: #00e5ff;
-        }
-
-        .skill p {
-            color: #999;
-        }
-
-        /* PROJECTS */
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        .project {
-            background: #111;
-            border: 1px solid #222;
-            border-radius: 15px;
-            padding: 30px;
-            transition: 0.3s;
-        }
-
-        .project:hover {
-            transform: translateY(-5px);
-            border-color: #00e5ff;
-        }
-
-        .project h3 {
-            color: #00e5ff;
-            margin-bottom: 10px;
-        }
-
-        .project p {
-            color: #999;
-        }
-
-        /* FUTURE */
-        .future {
+            align-items: center;
+            justify-content: center;
+            color: #7ca8c4;
+            background: white;
             text-align: center;
-            padding: 80px 30px;
-            border: 1px solid #222;
-            border-radius: 20px;
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(0, 229, 255, 0.08),
-                    rgba(0, 0, 0, 0.2)
-                );
+            padding: 20px;
         }
 
-        .future h2 {
-            font-size: 45px;
-            margin-bottom: 20px;
+        .image-placeholder span {
+            font-size: 0.8rem;
         }
 
-        .future p {
-            color: #aaa;
-            max-width: 700px;
-            margin: auto;
-            font-size: 18px;
+        /* =========================
+           HOBBIES
+        ========================= */
+
+        .hobbies {
+            min-height: 400px;
+            background: var(--dark-blue);
+            color: white;
+            display: flex;
+            align-items: center;
         }
 
-        /* FOOTER */
+        .hobbies .section-number {
+            color: #66c5ff;
+        }
+
+        .hobbies .section-title {
+            color: white;
+        }
+
+        .hobbies-placeholder {
+            margin-top: 30px;
+            height: 130px;
+            border: 1px dashed rgba(255,255,255,0.4);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
+            background: #032b4c;
+            color: #9fc5dd;
             text-align: center;
-            padding: 40px;
-            border-top: 1px solid #222;
-            color: #666;
+            padding: 30px;
+            font-size: 0.8rem;
         }
 
-        /* MOBILE */
-        @media (max-width: 800px) {
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
 
             nav ul {
                 display: none;
             }
 
-            .about {
+            .academic-grid,
+            .activity-wrapper {
                 grid-template-columns: 1fr;
             }
 
-            .skills {
+            .activity-info {
+                border-left: none;
+                border-top: 3px solid var(--blue);
+                border-radius: 0 0 20px 20px;
+            }
+
+            .activity-wheel {
+                width: min(430px, 90vw);
+                height: min(430px, 90vw);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 80px 6%;
+            }
+
+            .hero {
+                padding: 120px 6% 70px;
+            }
+
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
 
-            .projects {
+            .stats {
                 grid-template-columns: 1fr;
             }
 
-            .section-title {
-                font-size: 32px;
+            .activity-node {
+                width: 80px;
+                height: 80px;
+                font-size: 0.62rem;
+            }
+
+            .activity-wheel::after {
+                width: 80px;
+                height: 80px;
+                font-size: 1.3rem;
+            }
+
+            .node-2,
+            .node-5 {
+                right: -5px;
+            }
+
+            .node-5 {
+                left: -5px;
             }
         }
     </style>
@@ -290,226 +592,438 @@
 
 <body>
 
-    <!-- NAVIGATION -->
-    <nav>
-        <div class="logo">LDTH.</div>
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#future">Future</a></li>
-        </ul>
-    </nav>
+<nav>
+    <div class="nav-logo">
+        HIẾU<span>.</span>
+    </div>
+
+    <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#academic">Academic</a></li>
+        <li><a href="#activities">Activities</a></li>
+        <li><a href="#hobbies">Hobbies</a></li>
+    </ul>
+</nav>
 
 
-    <!-- HERO -->
-    <section class="hero" id="home">
+<!-- =========================
+     OVERVIEW
+========================= -->
 
-        <div class="hero-content">
+<section class="hero" id="overview">
 
-            <div class="tag">
-                Student • Engineering Enthusiast
-            </div>
+    <div class="circuit-bg">
+        <div class="circuit c1"></div>
+        <div class="circuit c2"></div>
+        <div class="circuit c3"></div>
+        <div class="circuit c4"></div>
+    </div>
 
-            <h1>
-                Lê Đào Trung <span>Hiếu</span>
-            </h1>
+    <div class="hero-content">
 
-            <p>
-                17 tuổi • Học sinh THPT Nguyễn Thượng Hiền
-                <br>
-                Future Electrical Engineer ⚡
-            </p>
-
-            <a href="#about" class="button">
-                Khám phá portfolio ↓
-            </a>
-
+        <div class="eyebrow">
+            ELECTRICAL ENGINEERING • PORTFOLIO
         </div>
 
-    </section>
+        <h1>
+            Lê Đào<br>
+            Trung <span>Hiếu</span>
+        </h1>
 
-
-    <!-- ABOUT -->
-    <section id="about">
-
-        <h2 class="section-title">
-            About <span>Me</span>
-        </h2>
-
-        <div class="about">
-
-            <div class="about-text">
-
-                <p>
-                    Xin chào! Mình là <strong>Lê Đào Trung Hiếu</strong>,
-                    hiện đang 17 tuổi và là học sinh của trường
-                    <strong>THPT Nguyễn Thượng Hiền</strong>.
-                </p>
-
-                <p>
-                    Mình có hứng thú với công nghệ, điện tử và cách
-                    những hệ thống kỹ thuật hoạt động.
-                </p>
-
-                <p>
-                    Trong thời gian tới, mình dự định theo học
-                    <strong>Electrical Engineering (EE)</strong>
-                    và muốn xây dựng nền tảng vững chắc về điện,
-                    điện tử, vi điều khiển và các hệ thống kỹ thuật.
-                </p>
-
-            </div>
-
-            <div class="info-card">
-
-                <div class="info">
-                    <span>Họ tên</span>
-                    <strong>Lê Đào Trung Hiếu</strong>
-                </div>
-
-                <div class="info">
-                    <span>Tuổi</span>
-                    <strong>17</strong>
-                </div>
-
-                <div class="info">
-                    <span>Trường</span>
-                    <strong>THPT Nguyễn Thượng Hiền</strong>
-                </div>
-
-                <div class="info">
-                    <span>Định hướng</span>
-                    <strong>Electrical Engineering</strong>
-                </div>
-
-                <div class="info">
-                    <span>Interest</span>
-                    <strong>Electronics ⚡</strong>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SKILLS -->
-    <section id="skills">
-
-        <h2 class="section-title">
-            My <span>Interests</span>
-        </h2>
-
-        <div class="skills">
-
-            <div class="skill">
-                <h3>⚡ Electronics</h3>
-                <p>
-                    Tìm hiểu về mạch điện, linh kiện điện tử,
-                    điện áp, dòng điện và cách các mạch hoạt động.
-                </p>
-            </div>
-
-            <div class="skill">
-                <h3>💻 Programming</h3>
-                <p>
-                    Học lập trình và sử dụng code để điều khiển
-                    các hệ thống điện tử và vi điều khiển.
-                </p>
-            </div>
-
-            <div class="skill">
-                <h3>🔧 Engineering</h3>
-                <p>
-                    Thích tìm hiểu cách thiết kế, xây dựng và
-                    giải quyết các vấn đề bằng kỹ thuật.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PROJECTS -->
-    <section id="projects">
-
-        <h2 class="section-title">
-            My <span>Projects</span>
-        </h2>
-
-        <div class="projects">
-
-            <div class="project">
-                <h3>Arduino Projects</h3>
-                <p>
-                    Thực hành với Arduino, LED, button, resistor,
-                    diode, capacitor và các linh kiện điện tử khác.
-                </p>
-            </div>
-
-            <div class="project">
-                <h3>Electronics Experiments</h3>
-                <p>
-                    Tự xây dựng các mạch nhỏ để hiểu rõ hơn về
-                    voltage, current, resistance và tín hiệu analog/digital.
-                </p>
-            </div>
-
-            <div class="project">
-                <h3>Future EE Projects</h3>
-                <p>
-                    Các dự án về embedded systems, mạch điện,
-                    microcontroller và hardware sẽ được cập nhật.
-                </p>
-            </div>
-
-            <div class="project">
-                <h3>Coming Soon...</h3>
-                <p>
-                    Đây mới chỉ là điểm bắt đầu. Những project
-                    lớn hơn sẽ xuất hiện trong tương lai. 🚀
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FUTURE -->
-    <section id="future">
-
-        <div class="future">
-
-            <h2>Future Electrical Engineer ⚡</h2>
-
-            <p>
-                Mục tiêu của mình là theo đuổi ngành
-                Electrical Engineering và từng bước phát triển
-                kiến thức về electronics, embedded systems,
-                hardware và engineering.
-            </p>
-
-            <a href="#home" class="button">
-                Back to top ↑
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer>
-        <p>
-            © 2026 Lê Đào Trung Hiếu • Built with HTML & CSS ⚡
+        <p class="hero-description">
+            Student from Ho Chi Minh City, Vietnam, with a strong interest
+            in Electrical Engineering, mathematics, technology and innovation.
         </p>
-    </footer>
+
+        <div class="contact-grid">
+
+            <div class="contact-item">
+                <div class="contact-label">Location</div>
+                <div class="contact-value">
+                    Ho Chi Minh City, Vietnam
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-label">Email</div>
+                <div class="contact-value">
+                    76ledaotrunghieu@gmail.com
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-label">Phone</div>
+                <div class="contact-value">
+                    0989415751
+                </div>
+            </div>
+
+            <!-- LINKEDIN PLACEHOLDERS -->
+
+            <div class="contact-item">
+                <div class="contact-label">LinkedIn</div>
+                <div class="contact-value linkedin-empty">
+                    ______________________________
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-label">LinkedIn</div>
+                <div class="contact-value linkedin-empty">
+                    ______________________________
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-label">LinkedIn</div>
+                <div class="contact-value linkedin-empty">
+                    ______________________________
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================
+     ACADEMIC
+========================= -->
+
+<section class="academic" id="academic">
+
+    <div class="section-header">
+        <div class="section-number">01 / ACADEMIC</div>
+
+        <h2 class="section-title">
+            Academic<br>Background
+        </h2>
+
+        <p class="section-subtitle">
+            Academic achievements and educational background.
+        </p>
+    </div>
+
+
+    <div class="academic-grid">
+
+        <div class="academic-card">
+
+            <h3>
+                THPT Nguyễn Thượng Hiền
+            </h3>
+
+            <div class="school-year">
+                2024 — 2027
+            </div>
+
+            <p>
+                Ho Chi Minh City, Vietnam
+            </p>
+
+        </div>
+
+
+        <div class="academic-card">
+
+            <h3>
+                Academic Performance
+            </h3>
+
+            <br>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <div class="stat-number">9.0</div>
+                    <div class="stat-label">
+                        Grade 10 GPA
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-number">9.4</div>
+                    <div class="stat-label">
+                        Grade 11 GPA
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-number">7.5</div>
+                    <div class="stat-label">
+                        IELTS
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-number">1450</div>
+                    <div class="stat-label">
+                        SAT
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+
+            <p>
+                <strong>SAT Breakdown:</strong>
+                670 Verbal · 780 Math
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ACTIVITIES
+========================= -->
+
+<section class="activities-section" id="activities">
+
+    <div class="section-header">
+
+        <div class="section-number">
+            02 / ACADEMIC ACTIVITIES
+        </div>
+
+        <h2 class="section-title">
+            Academic<br>Extracurriculars
+        </h2>
+
+        <p class="section-subtitle">
+            Hover over each node to explore the activities.
+        </p>
+
+    </div>
+
+
+    <!-- ACADEMIC ACTIVITIES -->
+
+    <div class="activity-wrapper">
+
+        <div class="activity-wheel">
+
+            <div class="activity-node node-1">
+                Grand Final List<br>
+                International Applied Mathematics Olympiad
+            </div>
+
+            <div class="activity-node node-2">
+                Samsung Solve<br>
+                for Tomorrow 2026
+            </div>
+
+            <div class="activity-node node-3">
+                KAIST<br>
+                Introduction to Devices
+            </div>
+
+            <div class="activity-node node-4">
+                Microsoft<br>
+                Introductory Programming
+            </div>
+
+            <div class="activity-node node-5">
+                UNESCO Today:<br>
+                The Voice
+            </div>
+
+        </div>
+
+
+        <div class="activity-info">
+
+            <h3>
+                Academic Activities
+            </h3>
+
+            <p>
+                Select or hover over an activity on the circular interface.
+                Add your own description and images here.
+            </p>
+
+            <div class="image-placeholder">
+                <span>
+                    📷 IMAGE PLACEHOLDER<br>
+                    Replace this area with your activity image.
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         COMMUNITY
+    ========================= -->
+
+    <div class="section-header">
+
+        <div class="section-number">
+            03 / COMMUNITY
+        </div>
+
+        <h2 class="section-title">
+            Community<br>Activities
+        </h2>
+
+        <p class="section-subtitle">
+            Community involvement, volunteering and social activities.
+        </p>
+
+    </div>
+
+
+    <div class="activity-wrapper">
+
+        <div class="activity-wheel">
+
+            <div class="activity-node node-1">
+                Hoa Phuong Do<br>
+                Volunteer Campaign
+            </div>
+
+            <div class="activity-node node-2">
+                Maersk Marathon
+            </div>
+
+            <div class="activity-node node-3">
+                Overseas Study<br>
+                Seminar
+            </div>
+
+            <div class="activity-node node-4">
+                ADD ACTIVITY
+            </div>
+
+        </div>
+
+
+        <div class="activity-info">
+
+            <h3>
+                Community Activities
+            </h3>
+
+            <p>
+                Add descriptions, roles, achievements and photos
+                for each community activity here.
+            </p>
+
+            <div class="image-placeholder">
+                <span>
+                    📷 IMAGE PLACEHOLDER<br>
+                    Replace this area with your activity image.
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         OTHER ACTIVITIES
+    ========================= -->
+
+    <div class="section-header">
+
+        <div class="section-number">
+            04 / OTHER ACTIVITIES
+        </div>
+
+        <h2 class="section-title">
+            Beyond<br>Academics
+        </h2>
+
+    </div>
+
+
+    <div class="activity-wrapper">
+
+        <div class="activity-wheel">
+
+            <div class="activity-node node-1">
+                Cheerleading
+            </div>
+
+            <div class="activity-node node-3">
+                Dance
+            </div>
+
+            <div class="activity-node node-5">
+                School Spirit
+            </div>
+
+        </div>
+
+
+        <div class="activity-info">
+
+            <h3>
+                Other Activities
+            </h3>
+
+            <p>
+                A space for activities outside academics and community work.
+            </p>
+
+            <div class="image-placeholder">
+                <span>
+                    📷 IMAGE PLACEHOLDER<br>
+                    Add your own photo here.
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HOBBIES
+========================= -->
+
+<section class="hobbies" id="hobbies">
+
+    <div>
+
+        <div class="section-number">
+            05 / HOBBIES
+        </div>
+
+        <h2 class="section-title">
+            Hobbies
+        </h2>
+
+        <div class="hobbies-placeholder">
+            Your hobbies will go here.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+    © 2026 Lê Đào Trung Hiếu · Electrical Engineering Portfolio
+</footer>
+
 
 </body>
 </html>
